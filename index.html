@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Qelvo AI | Study Assistant</title>
+<style>
+:root{--bg:#0b1020;--panel:#141b2e;--panel2:#1c2540;--text:#f5f7ff;--muted:#aab4d0;--accent:#8b7cff;--accent2:#54d6c8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b2450 0,#0b1020 55%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+.app{max-width:900px;margin:auto;min-height:100vh;display:flex;flex-direction:column;padding:18px}
+header{display:flex;align-items:center;gap:12px;padding:10px 2px 22px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#081020;font-size:24px;font-weight:900;box-shadow:0 8px 30px #6c63ff44}
+.brand{font-size:22px;font-weight:800;letter-spacing:.2px}.sub{font-size:12px;color:var(--muted)}.pill{margin-left:auto;border:1px solid #34405e;border-radius:999px;padding:7px 10px;font-size:11px;color:#b9c2dc}
+.hero{text-align:center;padding:36px 10px 22px}.eyebrow{color:var(--accent2);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(29px,6vw,48px);line-height:1.12;margin:12px 0}.gradient{background:linear-gradient(90deg,#fff,#a9a1ff,#7fe8de);color:transparent;background-clip:text}.hero p{max-width:550px;margin:0 auto;color:var(--muted);line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0}.card{background:linear-gradient(145deg,#19213a,#11182b);border:1px solid #2b3654;border-radius:18px;padding:17px;text-align:left;color:var(--text);cursor:pointer;transition:.2s}.card:hover{border-color:var(--accent);transform:translateY(-2px)}.card .emoji{font-size:23px}.card strong{display:block;margin:9px 0 4px}.card small{color:var(--muted);line-height:1.4}
+.chat{display:flex;flex-direction:column;gap:12px;flex:1;padding-bottom:12px}.message{max-width:88%;padding:13px 15px;border-radius:17px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.bot{background:#171f35;border:1px solid #2c3754;align-self:flex-start;border-bottom-left-radius:5px}.user{background:linear-gradient(135deg,#6f63ed,#4d9cc9);align-self:flex-end;border-bottom-right-radius:5px}.tag{font-size:11px;color:var(--accent2);display:block;margin-bottom:5px;font-weight:700}
+.composer{position:sticky;bottom:0;background:#0b1020eF;padding:12px 0 8px}.inputrow{display:flex;gap:8px;background:#151d31;border:1px solid #36415f;padding:7px;border-radius:18px}.inputrow input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:var(--text);padding:10px;font-size:15px}.send{border:0;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-weight:800;padding:0 18px;color:#081020;cursor:pointer}.fine{font-size:11px;text-align:center;color:#7e89a8;padding-top:9px}.hidden{display:none!important}.actions{display:flex;gap:8px;justify-content:center;margin:4px 0 14px}.secondary{border:1px solid #35405e;background:#151d31;color:#dce3ff;border-radius:10px;padding:8px 12px;cursor:pointer}
+@media(max-width:520px){.app{padding:13px}.pill{display:none}.hero{padding-top:25px}.cards{gap:9px}.card{padding:13px}.message{max-width:95%}}
+</style>
+</head>
+<body><main class="app">
+<header><div class="logo">Q</div><div><div class="brand">Qelvo AI</div><div class="sub">Your friendly study assistant</div></div><div class="pill">STUDENT EDITION</div></header>
+<section class="hero" id="hero"><div class="eyebrow">LEARN SMARTER</div><h1>पढ़ाई का नया साथी,<br><span class="gradient">Qelvo AI</span></h1><p>सवाल पूछो, मुश्किल टॉपिक आसान भाषा में समझो और अपनी परीक्षा की तैयारी करो।</p></section>
+<section class="cards" id="cards">
+<button class="card" data-prompt="मुझे विज्ञान का एक टॉपिक आसान हिंदी में समझाओ।"><span class="emoji">🔬</span><strong>विज्ञान समझें</strong><small>कठिन टॉपिक, आसान भाषा में</small></button>
+<button class="card" data-prompt="मुझे प्रतियोगी परीक्षा के लिए 5 MCQ सवाल उत्तर सहित दो।"><span class="emoji">📝</span><strong>MCQ प्रैक्टिस</strong><small>प्रश्नों से तैयारी मजबूत करें</small></button>
+<button class="card" data-prompt="मुझे आज के लिए एक आसान पढ़ाई का टाइमटेबल बनाकर दो।"><span class="emoji">📅</span><strong>स्टडी प्लान</strong><small>अपनी पढ़ाई व्यवस्थित करें</small></button>
+<button class="card" data-prompt="पशुपालन के बारे में एक जरूरी टॉपिक समझाओ।"><span class="emoji">🐄</span><strong>पशुपालन</strong><small>Animal Husbandry की पढ़ाई</small></button>
+</section>
+<div class="actions"><button class="secondary" id="newchat">＋ नई चैट</button><button class="secondary" id="clear">चैट साफ़ करें</button></div>
+<section class="chat" id="chat"><div class="message bot"><span class="tag">QELVO AI</span>नमस्ते! 👋 मैं Qelvo AI का शुरुआती प्रोटोटाइप हूँ। नीचे अपना पढ़ाई से जुड़ा सवाल लिखो। अभी यह डेमो मोड में है, इसलिए असली AI जवाबों के लिए बाद में सुरक्षित AI API जोड़नी होगी।</div></section>
+<div class="composer"><form class="inputrow" id="form"><input id="prompt" autocomplete="off" placeholder="अपना पढ़ाई का सवाल लिखें..." aria-label="अपना सवाल लिखें"><button class="send" type="submit">भेजें ➤</button></form><div class="fine">यह शुरुआती प्रोटोटाइप है • AI API अभी कनेक्ट नहीं है</div></div>
+</main>
+<script>
+const chat=document.querySelector('#chat'), input=document.querySelector('#prompt');
+function add(text,who){const el=document.createElement('div');el.className='message '+who;if(who==='bot'){const tag=document.createElement('span');tag.className='tag';tag.textContent='QELVO AI';el.appendChild(tag)}el.append(document.createTextNode(text));chat.appendChild(el);el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function demoReply(q){
+const s=q.toLowerCase();
+if(s.includes('mcq')||s.includes('प्रश्न'))return 'डेमो MCQ:\n\n1. भारत की राजधानी क्या है?\nA) जयपुर  B) नई दिल्ली  C) मुंबई  D) भोपाल\nउत्तर: B) नई दिल्ली\n\n2. पानी का रासायनिक सूत्र क्या है?\nA) CO₂  B) O₂  C) H₂O  D) NaCl\nउत्तर: C) H₂O\n\nध्यान दें: यह उदाहरण मात्र है। असली AI कनेक्शन के बाद विषय के अनुसार नए सवाल बन सकेंगे।';
+if(s.includes('टाइमटेबल')||s.includes('स्टडी प्लान'))return 'डेमो स्टडी प्लान:\n\n• 25 मिनट: एक टॉपिक पढ़ें\n• 5 मिनट: छोटा ब्रेक\n• 25 मिनट: नोट्स बनाएं\n• 20 मिनट: MCQ हल करें\n• 10 मिनट: गलत उत्तर दोहराएं\n\nअपनी परीक्षा और उपलब्ध समय के अनुसार इसे बदलें।';
+if(s.includes('पशुपालन')||s.includes('animal'))return 'पशुपालन में पशुओं का उचित आहार, आवास, प्रजनन, स्वास्थ्य और रोगों से बचाव शामिल हैं। उदाहरण के लिए, संतुलित आहार में ऊर्जा, प्रोटीन, खनिज, विटामिन और स्वच्छ पानी जरूरी होते हैं।\n\nकिसी खास टॉपिक का नाम लिखें। यह अभी डेमो उत्तर है, AI से लाइव जवाब नहीं।';
+return 'तुमने पूछा: “'+q+'”\n\nQelvo AI का इंटरफेस काम कर रहा है, लेकिन अभी असली AI मॉडल से जुड़ा नहीं है। लाइव जवाब पाने के लिए अगला कदम किसी AI API या मुफ्त-सीमा वाली AI सेवा को सुरक्षित तरीके से जोड़ना होगा। API key को इस HTML फाइल में सीधे नहीं डालना चाहिए।';
+}
+function send(q){q=q.trim();if(!q)return;add(q,'user');input.value='';setTimeout(()=>add(demoReply(q),'bot'),250);}
+document.querySelector('#form').addEventListener('submit',e=>{e.preventDefault();send(input.value)});
+document.querySelectorAll('[data-prompt]').forEach(b=>b.addEventListener('click',()=>send(b.dataset.prompt)));
+document.querySelector('#clear').addEventListener('click',()=>{chat.innerHTML='';add('चैट साफ़ हो गई। अब अपना नया सवाल पूछो।','bot')});
+document.querySelector('#newchat').addEventListener('click',()=>{chat.innerHTML='';add('नई चैट शुरू हो गई! पढ़ाई से जुड़ा सवाल लिखो।','bot');input.focus()});
+</script></body></html>
